@@ -1,24 +1,15 @@
-ввод = input()
+import re
 
-# Разделение строки на элементы по пробелам
-элементы = ввод.split()
+password = input()
 
-# Обработка каждого элемента
-for элемент in элементы:
-    if элемент.startswith('"') and элемент.endswith('"') and len(элемент) >= 2:
-        print("str")
-    elif элемент == "True" or элемент == "False":
-        print("bool")
-    else:
-        if '.' in элемент:
-            try:
-                float(элемент)
-                print("float")
-            except ValueError:
-                print("Неверный тип данных")
-        else:
-            try:
-                int(элемент)
-                print("int")
-            except ValueError:
-                print("Неверный тип данных")
+# Условие 1:
+starts_with_letter = re.match(r'(?i)^[a-zа-я]', password)
+
+# Условие 2 и 3:
+valid_chars_and_length = re.match(r'^(?=.*[a-zA-Zа-яА-Я0-9])[a-zA-Zа-яА-Я0-9]{8,}$', password)
+
+# Проверяем все условия
+if starts_with_letter and valid_chars_and_length:
+    print('Пароль принят!')
+else:
+    print('Пароль не принят!')
