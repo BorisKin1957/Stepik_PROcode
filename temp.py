@@ -1,6 +1,11 @@
+n = tuple(
+    map(int, input().replace(') ', ', ').replace('(', '').replace(')', '').split(', ')))
+i, nn = 0, []
 
+while i < len(n):
+    nn.append((n[i], n[i + 1]))
+    i += 2
+nn = tuple(nn)
 
-def calculate_platform(length, width, mode=0):
-    return length * width if mode else 2 * (length + width)
-
-print(calculate_platform(140, 100, 6))
+print(f"""Кортеж с минимальным первым элементом: {min(nn)}
+Кортеж с максимальным первым элементом: {max(nn)}""")
