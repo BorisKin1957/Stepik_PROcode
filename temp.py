@@ -1,5 +1,1 @@
-result = (1, 2)
-
-result += (3,)
-
-print(result)
+print(sorted(['планета', 'комета']))
