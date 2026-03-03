@@ -1,0 +1,12 @@
+
+
+
+input()
+A = set(input().split())
+
+input()
+B = set(input().split())
+
+print(f'A is subset of B? {A.issubset(B)}')
+print(f'B is superset of A? {B.issuperset(A)}')
+print(f'A and B are disjoint? {A.isdisjoint(B)}')
