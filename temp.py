@@ -1,1 +1,6 @@
-print(set(input().split()))
+def f(a, b, c):
+    print(f'Цена 1: {a} Цена 2: {b} Ценф 3: {c}')
+
+p = [1500, 2300, 3200]
+
+f(*p)
