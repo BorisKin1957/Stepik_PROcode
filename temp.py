@@ -1,18 +1,21 @@
-def my_decorator(func):
-    def w(*args, **kwargs):
-        print("Перед вызовом функции")
-        #r = func(*args, **kwargs)
-        print("После вызова функции")
-        return func(*args, **kwargs)
-    return w
-@my_decorator
-def say_hello(a, d):
-    print("Привет!")
-    return a + d
+def access_control(level):
+    def decor(f):
+        def wrap(a):
+            if user_level not in ['manager', 'admin']:
+                return 'Ошибка: доступ запрещен'
+            return f(a)
 
-# Применение декоратора
-#decorated_say_hello = my_decorator(say_hello)
+        return wrap
 
-# Вызов декорированной функции
+    return decor
 
-print(say_hello(1, 2))
+
+@access_control('')
+def delete_data(user_level):
+    return f'✅ Данные успешно удалены (пользователь: {user_level})'
+
+# Ввод уровня пользователя
+user_level = input().strip()
+
+# Вызов функции
+print(delete_data(user_level))
